@@ -77,7 +77,7 @@ object SignAnalysis {
     def genMonotoneFunction(p:List[LabeledInstr]):MonotoneFunction = {
         val cfg = buildCFG(p)
         val vars = allVars(p)
-        val s0 = vars.map( v => (v, Top)).toMap
+        val s0 = vars.map( v => if (v == "input") (v, Top) else (v, Bot)).toMap // set everything to bottom except for input
         def joinPredStates(label:Label, env:AbstractEnv):AbstractState = {
             val preds = predecessors(cfg, label)
             val preds_states = preds match { 

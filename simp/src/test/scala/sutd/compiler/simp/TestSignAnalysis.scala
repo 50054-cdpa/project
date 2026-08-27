@@ -44,9 +44,9 @@ class TestSignAnalysis extends funsuite.AnyFunSuite {
             (10, IRet)
         )
         val expected = HashMap(
-            1 -> HashMap("b" -> Top, "c" -> Top, "input" -> Top, "s" -> Top, "x" -> Top), 
-            2 -> HashMap("b" -> Top, "c" -> Top, "input" -> Top, "s" -> Zero, "x" -> Top), 
-            3 -> HashMap("b" -> Top, "c" -> Zero, "input" -> Top, "s" -> Zero, "x" -> Top), 
+            1 -> HashMap("b" -> Bot, "c" -> Bot, "input" -> Top, "s" -> Bot, "x" -> Top), 
+            2 -> HashMap("b" -> Bot, "c" -> Bot, "input" -> Top, "s" -> Zero, "x" -> Top), 
+            3 -> HashMap("b" -> Bot, "c" -> Zero, "input" -> Top, "s" -> Zero, "x" -> Top), 
             4 -> HashMap("b" -> Top, "c" -> Top, "input" -> Top, "s" -> Top, "x" -> Top),
             5 -> HashMap("b" -> Top, "c" -> Top, "input" -> Top, "s" -> Top, "x" -> Top), 
             6 -> HashMap("b" -> Top, "c" -> Top, "input" -> Top, "s" -> Top, "x" -> Top), 
@@ -85,7 +85,7 @@ class TestSignAnalysis extends funsuite.AnyFunSuite {
     8: _ret_r <- x
     9: ret
     */
-    test("test Sign Analysis with descending subraction"){
+    test("test Sign Analysis with descending subtraction"){
         val input = Temp(AVar("input"))
         val x = Temp(AVar("x"))
         val a = Temp(AVar("a"))
@@ -104,7 +104,7 @@ class TestSignAnalysis extends funsuite.AnyFunSuite {
             (9, IRet)
         )
         val expected = HashMap(
-            1 -> HashMap("x" -> Top, "a" -> Top, "b" -> Top, "c" -> Top, "input" -> Top), 
+            1 -> HashMap("x" -> Top, "a" -> Bot, "b" -> Bot, "c" -> Bot, "input" -> Top), 
             2 -> HashMap("x" -> Top, "a" -> Top, "b" -> Top, "c" -> Top, "input" -> Top), 
             3 -> HashMap("x" -> Top, "a" -> Top, "b" -> Top, "c" -> Top, "input" -> Top), 
             4 -> HashMap("x" -> Top, "a" -> Top, "b" -> Top, "c" -> Top, "input" -> Top),
